@@ -50,7 +50,8 @@
   padding: 0px;
 }
 
-.li, .h3 {
+.li,
+.h3 {
   list-style: none;
 }
 
@@ -73,7 +74,7 @@
 }
 
 /* Heading */
-h3,
+.h3,
 .new-task__title {
   color: #333;
   font-weight: 700;
