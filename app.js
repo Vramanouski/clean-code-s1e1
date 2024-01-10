@@ -8,10 +8,10 @@
 
 // Event handling, user interaction is what starts the code execution.
 
-var taskInput=document.getElementById("new-task");//Add a new task.
+var taskInput=document.querySelector(".new-task-row__input");//Add a new task.
 var addButton=document.getElementsByTagName("button")[0];//first button
-var incompleteTaskHolder=document.getElementById("incompleteTasks");//ul of #incompleteTasks
-var completedTasksHolder=document.getElementById("completed-tasks");//completed-tasks
+var incompleteTaskHolder=document.querySelector(".incomplete-tasks");//ul of #incompleteTasks
+var completedTasksHolder=document.querySelector(".completed-tasks");//completed-tasks
 
 
 //New task list item
@@ -22,7 +22,7 @@ var createNewTaskElement=function(taskString){
     //input (checkbox)
     var checkBox=document.createElement("input");//checkbx
     //label
-    var label=document.createElement("label");//label
+    var label=document.createElement("p");//label
     //input (text)
     var editInput=document.createElement("input");//text
     //button.edit
@@ -42,10 +42,21 @@ var createNewTaskElement=function(taskString){
 
     editButton.innerText="Edit"; //innerText encodes special characters, HTML does not.
     editButton.className="edit";
+    editButton.classList.add("button");
 
     deleteButton.className="delete";
     deleteButtonImg.src='./remove.svg';
+    deleteButton.classList.add("button");
+    deleteButtonImg.classList.add('delete__img');
     deleteButton.appendChild(deleteButtonImg);
+
+    listItem.classList.add('li');
+    checkBox.classList.add("input"); 
+    checkBox.classList.add("li__input-checkbox");
+    label.classList.add('li__task-text');
+    editInput.classList.add('input');
+    editInput.classList.add('li__input-text')
+
 
 
     //and appending.
@@ -83,9 +94,9 @@ var editTask=function(){
     var listItem=this.parentNode;
 
     var editInput=listItem.querySelector('input[type=text]');
-    var label=listItem.querySelector("label");
+    var label=listItem.querySelector("p");
     var editBtn=listItem.querySelector(".edit");
-    var containsClass=listItem.classList.contains("editMode");
+    var containsClass=listItem.classList.contains("li-edit-mode");
     //If class of the parent is .editmode
     if(containsClass){
 
@@ -99,7 +110,9 @@ var editTask=function(){
     }
 
     //toggle .editmode on the parent.
-    listItem.classList.toggle("editMode");
+    listItem.classList.toggle("li-edit-mode");
+    label.classList.toggle('li__task-text_edit');
+    editInput.classList.toggle('li__input-text_edit')
 };
 
 
